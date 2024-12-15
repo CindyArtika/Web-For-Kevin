@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Web For Kevin</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: black;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: black;
+            overflow: hidden;
+        }
+
+        .stars::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            box-shadow: 0px 0px 5px white, 0 0 10px white, 0 0 15px white;
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .love {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            color: red;
+            text-shadow: 0px 0px 10px red, 0px 0px 20px red, 0px 0px 30px red;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        .name {
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 50px;
+            color: white;
+            animation: fadeIn 3s infinite;
+        }
+
+        @keyframes fadeIn {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="love">❤️</div>>
+    <div class="name">Kevin</div>
+
+    <script>
+        // Generate random stars
+        const starsContainer = document.querySelector('.stars');
+        for (let i = 0; i < 1000; i++) {
+            const star = document.createElement('div');
+            star.style.position = 'absolute';
+            star.style.width = '2px';
+            star.style.height = '2px';
+            star.style.background = 'white';
+            star.style.top = Math.random() * window.innerHeight + 'px';
+            star.style.left = Math.random() * window.innerWidth + 'px';
+            star.style.animation = `twinkle ${Math.random() * 3 + 2}s infinite`;
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>
